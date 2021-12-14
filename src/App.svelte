@@ -2,34 +2,30 @@
   import { onMount } from "svelte";
 
   import request from "./request";
+  import type ITemp from "./itemp";
   import Temp from "./components/Temp.svelte";
-  import DayTemps from "./components/DayTemps.svelte";
+  import TodayTemps from "./components/TodayTemps.svelte";
 
-  let url = "http://192.168.0.110:8080";
+  let url = "http://localhost:3030";
   let temp: number;
-  let temps: TempI[];
+  let temps: ITemp[];
   let hour: number;
 
-  interface TempI {
-    averageTemp: number;
-    h: number;
-  }
-
   async function getTemp() {
-    let response = await request<TempI>(`${url}/last_temp`);
+    let response = await request<ITemp>(`${url}/last_temp`);
     temp = response.averageTemp;
     hour = response.h;
   }
 
   onMount(async () => {
-    temps = await request<TempI[]>(`${url}/temps/28`);
+    temps = await request<ITemp[]>(`${url}/temps/11`);
     getTemp();
   });
 </script>
 
 <main>
   <Temp number={temp} {hour} />
-  <DayTemps {temps} />
+  <TodayTemps {temps} />
 </main>
 
 <style lang="scss">

@@ -1,16 +1,13 @@
 <script lang="ts">
-  interface TempI {
-    averageTemp: number;
-    h: number;
-  }
-  export let temps: TempI[];
+  import type ITemp from "../itemp";
+  export let temps: ITemp[];
 </script>
 
 <div>
-  <h1>Yesterday temperatures</h1>
+  <h1>Yesterday temps</h1>
   {#if temps}
     {#each temps as temp}
-      <p>{temp.averageTemp}</p>
+      <p>{temp.averageTemp}°C</p>
     {/each}
   {:else}
     <p class="error-msg">Can't get the temps</p>
