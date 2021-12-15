@@ -13,14 +13,12 @@
 </div>
 
 <style lang="scss">
+  @import "../style.scss";
+
   $night: #bcc1e0;
 
   div {
-    text-align: center;
-    border: 3px solid #83afc9;
-    border-radius: 0.2rem;
-    padding: 3rem;
-    margin-top: 8rem;
+    @include component;
   }
   .night {
     border-color: $night;

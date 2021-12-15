@@ -5,6 +5,7 @@
   import type ITemp from "./itemp";
   import Temp from "./components/Temp.svelte";
   import TodayTemps from "./components/TodayTemps.svelte";
+  import TempButtons from "./components/TempButtons.svelte";
 
   let url = "http://localhost:3030";
   let temp: number;
@@ -26,27 +27,25 @@
 <main>
   <Temp number={temp} {hour} />
   <TodayTemps {temps} />
+  <TempButtons />
 </main>
 
 <style lang="scss">
-  /* Dark colors*/
-  $bg-color: #0b1318;
-  $fg-color: #f6f9fb;
-
-  /* Light colors
-  $bg-color: #f6f9fb;
-  $fg-color: #0b0e15;
-*/
+  @import "./style.scss";
 
   :root {
     background-color: $bg-color;
     color: $fg-color;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   main {
     display: flex;
     justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    width: 100vh;
   }
 </style>

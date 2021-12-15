@@ -15,13 +15,10 @@
 </div>
 
 <style lang="scss">
+  @import "../style.scss";
+
   div {
-    text-align: center;
-    border: 3px solid #83afc9;
-    border-radius: 0.2rem;
-    padding: 3rem;
-    margin-top: 8rem;
-    margin-left: 2rem;
+    @include component;
   }
   .error-msg {
     font-size: 1.2rem;
