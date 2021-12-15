@@ -1,3 +1,12 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    let t = new Date();
+    console.log(t.getDate());
+  });
+</script>
+
 <div>
   <button>Sunday</button>
   <button>Monday</button>
@@ -5,6 +14,15 @@
   <button>Wednesday</button>
 </div>
 
+<!-- <Day
+  temps={[
+    {
+      averageTemp: -5,
+      h: 7,
+    },
+  ]}
+  day="Wednesday"
+/> -->
 <style lang="scss">
   @import "../style.scss";
 
