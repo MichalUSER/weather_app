@@ -27,7 +27,7 @@
 <main>
   <Temp number={temp} {hour} />
   <TodayTemps {temps} />
-  <TempButtons />
+  <TempButtons days={["Monday", "Tuesday", "Wednesday", "Thursday"]} />
 </main>
 
 <style lang="scss">

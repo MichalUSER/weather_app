@@ -1,17 +1,22 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  export let days: string[];
+  // export let temps: ITemp[];
+
   onMount(() => {
     let t = new Date();
     console.log(t.getDate());
   });
 </script>
 
-<div>
-  <button>Sunday</button>
-  <button>Monday</button>
-  <button>Tuesday</button>
-  <button>Wednesday</button>
+<div class="component">
+  <h1>Week temps</h1>
+  <div class="days">
+    {#each days as d}
+      <button>{d}</button>
+    {/each}
+  </div>
 </div>
 
 <!-- <Day
@@ -41,8 +46,19 @@
     }
   }
 
-  div {
+  h1 {
+    font-size: 1.7rem;
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+
+  .component {
     @include component;
+    margin-top: 4rem;
+    padding: 3rem 3rem;
+  }
+
+  .days {
     display: flex;
     justify-content: center;
     flex-direction: row;
