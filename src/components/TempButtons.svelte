@@ -1,33 +1,46 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Day from "./Day.svelte";
+  import visible from "../stores";
 
   export let days: string[];
-  // export let temps: ITemp[];
+  let i = 0;
 
   onMount(() => {
     let t = new Date();
     console.log(t.getDate());
   });
+
+  function onClick(index: number) {
+	$visible = !$visible; 
+	i = index;
+  }
 </script>
 
 <div class="component">
   <h1>Week temps</h1>
   <div class="days">
-    {#each days as d}
-      <button>{d}</button>
+    {#each days as d, index}
+      <button on:click={() => onClick(index)}>{d}</button>
     {/each}
   </div>
 </div>
 
-<!-- <Day
-  temps={[
-    {
-      averageTemp: -5,
-      h: 7,
-    },
-  ]}
-  day="Wednesday"
-/> -->
+{#if $visible}
+  <Day
+    temps={[
+      [
+        {
+          averageTemp: -5,
+          h: 7,
+        },
+      ],
+    ]}
+    day="Wednesday"
+    {i}
+  />
+{/if}
+
 <style lang="scss">
   @import "../style.scss";
 
