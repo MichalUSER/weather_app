@@ -1,15 +1,9 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import Day from "./Day.svelte";
   import visible from "../stores";
 
   export let days: string[];
   let i = 0;
-
-  onMount(() => {
-    let t = new Date();
-    console.log(t.getDate());
-  });
 
   function onClick(index: number) {
 	$visible = !$visible; 
