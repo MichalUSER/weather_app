@@ -28,8 +28,7 @@
   {#await weekTemps}
     <p>waiting...</p>
   {:then data}
-    {@debug data}
-    <TempButtons days={data[1]} />
+    <TempButtons temps={data[0]} days={data[1]} />
   {/await}
 </main>
 

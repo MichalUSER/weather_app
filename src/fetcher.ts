@@ -39,17 +39,18 @@ function getDay(): number {
 }
 
 async function fetchTemps(): Promise<[ITemp[][], string[]]> {
-  let fourTemps: ITemp[][] = [[]];
+  let fourTemps: ITemp[][] = [];
   let days: string[] = [];
   // let monthDay = 11 // for dev purposes
-  let today = getDay();
-  for (let i = today; i > today - 4; i--) {
+  let day = getDay();
+  let dayOfMonth = new Date().getDate();
+  for (let i = dayOfMonth; i > dayOfMonth - 4; i--) {
     let response = await request<ITemp[]>(`${url}/temps/${i}`);
     if (response.length == 0) {
       continue;
     }
     fourTemps.push(response);
-    days.push(toDay(today - (today - i)));
+    days.push(toDay(day - (dayOfMonth - i)));
   }
 
   return [fourTemps, days];

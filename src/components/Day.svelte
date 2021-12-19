@@ -4,7 +4,7 @@
   import visible from "../stores";
 
   export let temps: ITemp[][];
-  export let day: string;
+  export let days: string[];
   export let i: number;
 </script>
 
@@ -16,7 +16,7 @@
     opacity: 0.4,
 }}
 >
-  <h1>{day}</h1>
+  <h1>{days[i]}</h1>
   {#each temps[i] as temp}
     <p>{temp.averageTemp}°C</p>
   {/each}

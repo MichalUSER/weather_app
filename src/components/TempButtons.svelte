@@ -1,8 +1,10 @@
 <script lang="ts">
+  import type ITemp from "src/itemp";
   import Day from "./Day.svelte";
   import visible from "../stores";
 
   export let days: string[];
+  export let temps: ITemp[][];
   let i = 0;
 
   function onClick(index: number) {
@@ -22,15 +24,8 @@
 
 {#if $visible}
   <Day
-    temps={[
-      [
-        {
-          averageTemp: -5,
-          h: 7,
-        },
-      ],
-    ]}
-    day="Wednesday"
+    {temps}
+    {days}
     {i}
   />
 {/if}
