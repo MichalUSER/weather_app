@@ -7,37 +7,30 @@
 
   import request from "./request";
   import type ITemp from "./itemp";
-  import { url } from "./fetcher";
+  import { url, fetchTemp, fetchTemps } from "./fetcher";
 
   let todayTemps: ITemp[] = [];
-  let number: number;
-  let hour: number;
+  let weekTemps = fetchTemps();
+  let temp = fetchTemp();
 
   onMount(async () => {
-    todayTemps = await request<ITemp[]>(`${url}/temps/11`);
-    // This works
-    let response = await request<ITemp>(`${url}/last_temp`);
-    number = response.averageTemp;
-    hour = response.h;
-    // This doesn't
-    /*
-    // outside onMount
-    let temp: ITemp;
-    // here
-    temp = await request<ITemp>(`${url}/last_temp`);
-    // when you try to access temp, it's undefined, why?
-    */ 
+    todayTemps = await request<ITemp[]>(`${url}/temps/8`);
   });
 </script>
 
 <main>
-  <!--{#await tempP}
+  {#await temp}
     <p>waiting...</p>
   {:then data}
-  {/await}-->
-  <Temp {number} {hour} />
+    <Temp number={data.averageTemp} hour={data.h} />
+  {/await}
   <TodayTemps temps={todayTemps} />
-  <TempButtons days={["Tuesday", "Wednesday", "Thursday", "Friday"]} />
+  {#await weekTemps}
+    <p>waiting...</p>
+  {:then data}
+    {@debug data}
+    <TempButtons days={data[1]} />
+  {/await}
 </main>
 
 <style lang="scss">

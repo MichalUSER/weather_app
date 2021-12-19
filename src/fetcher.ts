@@ -3,7 +3,7 @@ import request from "./request";
 
 const url = "http://localhost:3030";
 
-async function getTemp(): Promise<ITemp> {
+async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);
 }
 
@@ -28,19 +28,28 @@ function toDay(n: number): string {
   }
 }
 
-async function getTemps(): Promise<[ITemp[][], string[]]> {
-  let fourTemps: ITemp[][];
-  let days: string[];
-  //let monthDay = new Date().getDate();
-  let d = new Date();
-  let monthDay = 11
-  for (let i = monthDay; i > monthDay - 4; i--) {
-    let response = await request<ITemp[]>(`${url}/temps/${i}`) 
+function getDay(): number {
+  const d = new Date().getDay();
+  switch (d) {
+    case 0:
+      return 7;
+    default:
+      return d;
+  }
+}
+
+async function fetchTemps(): Promise<[ITemp[][], string[]]> {
+  let fourTemps: ITemp[][] = [[]];
+  let days: string[] = [];
+  // let monthDay = 11 // for dev purposes
+  let today = getDay();
+  for (let i = today; i > today - 4; i--) {
+    let response = await request<ITemp[]>(`${url}/temps/${i}`);
     if (response.length == 0) {
       continue;
     }
     fourTemps.push(response);
-    days.push(toDay(d.getDay() - i + 1));
+    days.push(toDay(today - (today - i)));
   }
 
   return [fourTemps, days];
@@ -48,6 +57,6 @@ async function getTemps(): Promise<[ITemp[][], string[]]> {
 
 export {
   url,
-  getTemp,
-  getTemps
+  fetchTemp,
+  fetchTemps
 };
