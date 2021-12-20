@@ -9,11 +9,11 @@ async function fetchTemp(): Promise<ITemp> {
 
 function toDay(n: number): string {
   switch (n) {
-    case 1:
+    case 8:
       return "Monday";
-    case 2:
+    case 9:
       return "Tuesday";
-    case 3:
+    case 10:
       return "Wednesday";
     case 4:
       return "Thursday";
@@ -33,6 +33,12 @@ function getDay(): number {
   switch (d) {
     case 0:
       return 7;
+    case 1:
+      return 8;
+    case 2:
+      return 9;
+    case 3:
+      return 10;
     default:
       return d;
   }
