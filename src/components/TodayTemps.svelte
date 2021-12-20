@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type ITemp from "../itemp";
+  import type ITemp from "../utils/itemp";
   export let temps: ITemp[];
 </script>
 

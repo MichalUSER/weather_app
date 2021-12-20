@@ -5,9 +5,9 @@
   import TodayTemps from "./components/TodayTemps.svelte";
   import TempButtons from "./components/TempButtons.svelte";
 
-  import request from "./request";
-  import type ITemp from "./itemp";
-  import { url, fetchTemp, fetchTemps } from "./fetcher";
+  import request from "./utils/request";
+  import type ITemp from "./utils/itemp";
+  import { url, fetchTemp, fetchTemps } from "./utils/fetcher";
 
   let todayTemps: ITemp[] = [];
   let weekTemps = fetchTemps();

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type ITemp from "src/itemp";
+  import type ITemp from "../utils/itemp";
   import Day from "./Day.svelte";
-  import visible from "../stores";
+  import visible from "../utils/stores";
 
   export let days: string[];
   export let temps: ITemp[][];
   let i = 0;
 
   function onClick(index: number) {
-	$visible = !$visible; 
-	i = index;
+    $visible = !$visible;
+    i = index;
   }
 </script>
 
@@ -23,11 +23,7 @@
 </div>
 
 {#if $visible}
-  <Day
-    {temps}
-    {days}
-    {i}
-  />
+  <Day {temps} {days} {i} />
 {/if}
 
 <style lang="scss">

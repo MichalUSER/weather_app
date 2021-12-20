@@ -1,20 +1,20 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import type ITemp from "../itemp";
-  import visible from "../stores";
+  import type ITemp from "../utils/itemp";
+  import visible from "../utils/stores";
 
   export let temps: ITemp[][];
   export let days: string[];
   export let i: number;
 </script>
 
-<div 
+<div
   class="component"
   transition:fly={{
     duration: 200,
     x: 200,
     opacity: 0.4,
-}}
+  }}
 >
   <h1>{days[i]}</h1>
   {#each temps[i] as temp}
