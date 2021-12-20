@@ -6,6 +6,7 @@
   export let temps: ITemp[][];
   export let days: string[];
   export let i: number;
+  let dayTemps = temps[i];
 </script>
 
 <div
@@ -17,8 +18,11 @@
   }}
 >
   <h1>{days[i]}</h1>
-  {#each temps[i] as temp}
-    <p>{temp.averageTemp}°C</p>
+  {#each dayTemps as temp}
+    <div class="wrapper">
+      <h2>{temp.h}:00</h2>
+      <p>{temp.averageTemp}°C</p>
+    </div>
   {/each}
   <button on:click={() => ($visible = !$visible)}>OK</button>
 </div>
@@ -41,15 +45,25 @@
     }
   }
 
+  .wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   button {
     @include ok-button;
+    position: absolute;
+    bottom: 4rem;
   }
   .component {
     position: fixed;
     top: 0;
     right: 0;
     margin: 0;
-    padding: 1rem 3rem;
+    padding: 0 1.3rem;
+    width: 20vh;
     height: 100%;
     background: $bg-color;
     border-left: 1px solid $blue-color;
