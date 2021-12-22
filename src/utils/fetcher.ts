@@ -1,7 +1,7 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://localhost:3030";
+const url = "http://192.168.0.110:8080";
 
 async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);
@@ -50,7 +50,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   // let monthDay = 11 // for dev purposes
   let day = getDay();
   let dayOfMonth = new Date().getDate();
-  for (let i = dayOfMonth; i > dayOfMonth - 4; i--) {
+  for (let i = dayOfMonth - 4; i < dayOfMonth + 1; i++) {
     let response = await request<ITemp[]>(`${url}/temps/${i}`);
     if (response.length == 0) {
       continue;
