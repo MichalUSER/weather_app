@@ -1,7 +1,7 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://192.168.0.110:8080";
+const url = "http://192.168.100.8:8080";
 
 async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);
@@ -9,6 +9,12 @@ async function fetchTemp(): Promise<ITemp> {
 
 function toDay(n: number): string {
   switch (n) {
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
     case 8:
       return "Monday";
     case 9:
@@ -57,6 +63,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
     }
     fourTemps.push(response);
     days.push(toDay(day - (dayOfMonth - i)));
+    console.log(day - (dayOfMonth - i));
   }
 
   return [fourTemps, days];
