@@ -19,6 +19,9 @@
 
   div {
     @include component;
+    @include sm {
+      padding: 1rem 1.4rem;
+    }
   }
   .night {
     border-color: $night;
@@ -30,9 +33,15 @@
 
   h1 {
     font-size: 3.1rem;
+    @include sm {
+      font-size: 2.6rem;
+    }
   }
   p {
     font-size: 1.5rem;
+    @include sm {
+      font-size: 1.1rem;
+    }
     span {
       color: #70a3c0;
       font-weight: bold;

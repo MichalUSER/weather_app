@@ -2,19 +2,26 @@
   import { onMount } from "svelte";
 
   import Temp from "./components/Temp.svelte";
-  import TodayTemps from "./components/TodayTemps.svelte";
+  import YesterdayTemp from "./components/YesterdayTemp.svelte";
   import TempButtons from "./components/TempButtons.svelte";
 
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
   import { url, fetchTemp, fetchTemps } from "./utils/fetcher";
 
-  let todayTemps: ITemp[] = [];
+  let averageTemp = 0;
   let weekTemps = fetchTemps();
   let temp = fetchTemp();
 
+  function getAverage(temps: ITemp[]): number {
+    const sum = temps.reduce((acc, curr) => acc + parseFloat(curr.averageTemp), 0);
+    return +(sum / temps.length).toFixed(2);
+  }
+
   onMount(async () => {
-    todayTemps = await request<ITemp[]>(`${url}/temps/8`);
+    const date = new Date();
+    const yesterdayTemps = await request<ITemp[]>(`${url}/temps/${date.getDate() - 1}`);
+    averageTemp = getAverage(yesterdayTemps);
   });
 </script>
 
@@ -24,7 +31,7 @@
   {:then data}
     <Temp number={data.averageTemp} hour={data.h} />
   {/await}
-  <TodayTemps temps={todayTemps} />
+  <YesterdayTemp temp={averageTemp} />
   {#await weekTemps}
     <p>waiting...</p>
   {:then data}
@@ -45,9 +52,14 @@
     align-items: center;
   }
   main {
+    @include sm {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100vh;
+    width: 140vh;
   }
 </style>

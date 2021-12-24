@@ -63,7 +63,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
     }
     fourTemps.push(response);
     days.push(toDay(day - (dayOfMonth - i)));
-    console.log(day - (dayOfMonth - i));
+    //console.log(day - (dayOfMonth - i));
   }
 
   return [fourTemps, days];

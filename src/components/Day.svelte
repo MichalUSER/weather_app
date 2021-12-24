@@ -18,12 +18,14 @@
   }}
 >
   <h1>{days[i]}</h1>
-  {#each dayTemps as temp}
-    <div class="wrapper">
-      <h2>{temp.h}:00</h2>
-      <p>{temp.averageTemp}°C</p>
-    </div>
-  {/each}
+  <div class="scroll">
+    {#each dayTemps as temp}
+      <div class="wrapper">
+        <h2>{temp.h}:00</h2>
+        <p>{temp.averageTemp}°C</p>
+      </div>
+    {/each}
+  </div>
   <button on:click={() => ($visible = !$visible)}>OK</button>
 </div>
 
@@ -47,17 +49,35 @@
 
   .wrapper {
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: space-between;
+  }
+  .wrapper > * {
+    margin: 7px;
   }
 
   button {
     @include ok-button;
     position: absolute;
-    bottom: 4rem;
+    bottom: 0;
+    margin-bottom: 1.3rem;
   }
+
+  .scroll {
+    @include sm {
+      width: 70%;
+    }
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 5rem;
+  }
+
   .component {
+    @include sm {
+      width: 100%;
+      border: 0;
+      padding: 0;
+    }
     position: fixed;
     top: 0;
     right: 0;
