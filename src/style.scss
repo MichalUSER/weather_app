@@ -1,13 +1,13 @@
 /* Dark colors*/
 $bg-color: #0b1318;
 $fg-color: #f6f9fb;
+
 $blue-color: #83afc9;
 
 /* Light colors
 $bg-color: #f6f9fb;
 $fg-color: #0b0e15;
 */
-
 
 $screen-sm-min: 576px;
 @mixin sm {
@@ -19,8 +19,8 @@ $screen-sm-min: 576px;
 @mixin flex {
   display: flex;
   justify-content: center;
-	align-content: center;
-	flex-direction: column;
+  align-content: center;
+  flex-direction: column;
 }
 
 @mixin component {

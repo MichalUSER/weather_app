@@ -4,9 +4,9 @@
 </script>
 
 <div class:night={hour > 20}>
-  <h1>Temp</h1>
+  <h1>Current temp</h1>
   {#if hour}
-    <p>The temperature is <span>{number}°C</span></p>
+    <p>{number}°C</p>
   {:else}
     <p class="error-msg">Can't get the temp</p>
   {/if}
@@ -32,19 +32,17 @@
   }
 
   h1 {
-    font-size: 3.1rem;
+    font-size: 2.6rem;
     @include sm {
-      font-size: 2.6rem;
+      font-size: 1.9rem;
     }
   }
   p {
     font-size: 1.5rem;
+    color: #70a3c0;
+    font-weight: bold;
     @include sm {
       font-size: 1.1rem;
-    }
-    span {
-      color: #70a3c0;
-      font-weight: bold;
     }
   }
 </style>

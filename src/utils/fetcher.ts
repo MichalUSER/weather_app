@@ -1,7 +1,7 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://192.168.100.8:8080";
+const url = "http://192.168.1.19:8080";
 
 async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);

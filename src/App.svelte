@@ -51,6 +51,7 @@
     justify-content: center;
     align-items: center;
   }
+
   main {
     @include sm {
       width: 100%;
