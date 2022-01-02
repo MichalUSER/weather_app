@@ -2,11 +2,13 @@
   import { fly } from "svelte/transition";
   import type ITemp from "../utils/itemp";
   import visible from "../utils/stores";
+  import { average } from "../utils/fetcher";
 
   export let temps: ITemp[][];
   export let days: string[];
   export let i: number;
   let dayTemps = temps[i];
+  let dayAverage = average(dayTemps);
 </script>
 
 <div
@@ -18,6 +20,7 @@
   }}
 >
   <h1>{days[i]}</h1>
+  <p>{dayAverage}°C</p>
   <div class="scroll">
     {#each dayTemps as temp}
       <div class="wrapper">
@@ -45,6 +48,15 @@
     &:focus {
       outline: auto;
     }
+  }
+
+  h1 {
+    margin-bottom: 2px;
+  }
+  p {
+    color: $blue-color;
+    margin-top: 0;
+    margin-bottom: 1.3rem;
   }
 
   .wrapper {
@@ -79,11 +91,11 @@
       padding: 0;
     }
     position: fixed;
+    z-index: 2;
     top: 0;
     right: 0;
     margin: 0;
     padding: 0 1.3rem;
-    width: 20vh;
     height: 100%;
     background: $bg-color;
     border-left: 1px solid $blue-color;

@@ -7,21 +7,16 @@
 
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
-  import { url, fetchTemp, fetchTemps } from "./utils/fetcher";
+  import { url, fetchTemp, fetchTemps, average } from "./utils/fetcher";
 
   let averageTemp = 0;
   let weekTemps = fetchTemps();
   let temp = fetchTemp();
 
-  function getAverage(temps: ITemp[]): number {
-    const sum = temps.reduce((acc, curr) => acc + parseFloat(curr.averageTemp), 0);
-    return +(sum / temps.length).toFixed(2);
-  }
-
   onMount(async () => {
     const date = new Date();
     const yesterdayTemps = await request<ITemp[]>(`${url}/temps/${date.getDate() - 1}`);
-    averageTemp = getAverage(yesterdayTemps);
+    averageTemp = average(yesterdayTemps);
   });
 </script>
 
