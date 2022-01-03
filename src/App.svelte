@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import Header from "./components/Header.svelte";
   import Temp from "./components/Temp.svelte";
   import YesterdayTemp from "./components/YesterdayTemp.svelte";
   import TempButtons from "./components/TempButtons.svelte";
@@ -20,6 +21,7 @@
   });
 </script>
 
+<Header />
 <main>
   {#await temp}
     <p>waiting...</p>
