@@ -32,7 +32,7 @@
   }
 
   h1 {
-    font-size: 2.6rem;
+    font-size: 2rem;
     @include sm {
       font-size: 1.9rem;
     }
@@ -40,7 +40,6 @@
   p {
     font-size: 1.5rem;
     color: #70a3c0;
-    font-weight: bold;
     @include sm {
       font-size: 1.1rem;
     }

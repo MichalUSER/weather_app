@@ -32,7 +32,6 @@
   p {
     font-size: 1.3rem;
     color: #70a3c0;
-    font-weight: bold;
     margin: 5px 10px;
   }
 </style>

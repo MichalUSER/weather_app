@@ -14,9 +14,9 @@
   h1 {
     color: $fg-color;
     margin: 2rem 0;
-    font-size: 3rem;
+    font-size: 2.8rem;
     @include sm {
-      font-size: 2.3rem;
+      font-size: 2rem;
     }
   }
 </style>
