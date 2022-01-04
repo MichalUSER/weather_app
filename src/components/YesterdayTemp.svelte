@@ -5,14 +5,12 @@
   export let temp: number = 0;
 </script>
 
-<div>
-  <h1>Yesterday temp</h1>
-  {#if temp}
+{#if temp}
+  <div>
+    <h1>Yesterday temp</h1>
     <p>{temp}°C</p>
-  {:else}
-    <p class="error-msg">Can't get the temps</p>
-  {/if}
-</div>
+  </div>
+{/if}
 
 <style lang="scss">
   @import "../style.scss";
@@ -20,10 +18,6 @@
   div {
     @include component;
     @include flex;
-  }
-  .error-msg {
-    font-size: 1.2rem;
-    color: #ea6161;
   }
 
   h1 {

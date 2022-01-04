@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import Loading from "./components/Loading.svelte";
   import Header from "./components/Header.svelte";
   import Temp from "./components/Temp.svelte";
   import YesterdayTemp from "./components/YesterdayTemp.svelte";
@@ -24,13 +25,13 @@
 <Header />
 <main>
   {#await temp}
-    <p>waiting...</p>
+    <Loading />
   {:then data}
     <Temp number={data.averageTemp} hour={data.h} />
   {/await}
   <YesterdayTemp temp={averageTemp} />
   {#await weekTemps}
-    <p>waiting...</p>
+    <Loading />
   {:then data}
     <TempButtons temps={data[0]} days={data[1]} />
   {/await}
