@@ -23,19 +23,21 @@
 </script>
 
 <Header />
-<main>
-  {#await temp}
-    <Loading />
-  {:then data}
-    <Temp number={data.averageTemp} hour={data.h} />
-  {/await}
-  <YesterdayTemp temp={averageTemp} />
-  {#await weekTemps}
-    <Loading />
-  {:then data}
-    <TempButtons temps={data[0]} days={data[1]} />
-  {/await}
-</main>
+<div class="wrapper">
+  <main>
+    {#await temp}
+      <Loading />
+    {:then data}
+      <Temp number={data.averageTemp} hour={data.h} />
+    {/await}
+    <YesterdayTemp temp={averageTemp} />
+    {#await weekTemps}
+      <Loading />
+    {:then data}
+      <TempButtons temps={data[0]} days={data[1]} />
+    {/await}
+  </main>
+</div>
 
 <style lang="scss">
   @import "./style.scss";
@@ -45,20 +47,22 @@
     color: $fg-color;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+
+  .wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   main {
     @include sm {
       width: 100%;
-      margin-top: 1rem;
+      margin-top: 3rem;
     }
-    margin-top: 3rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 140vh;
+    width: 120vh;
   }
 </style>

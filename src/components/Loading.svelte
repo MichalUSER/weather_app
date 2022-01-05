@@ -36,8 +36,4 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
-  p {
-    color: $blue-color;
-    font-size: 1.3rem;
-  }
 </style>
