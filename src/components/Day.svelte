@@ -15,8 +15,7 @@
   class="component"
   transition:fly={{
     duration: 200,
-    x: 200,
-    opacity: 0.4,
+    x: 400,
   }}
 >
   <h1>{days[i]}</h1>
