@@ -1,6 +1,6 @@
 <header>
   <div class="wrapper">
-    <h1>Weather Forecast</h1>
+    <h1>Weather</h1>
     <a href="https://github.com/MichalUSER" target="_blank">github</a>
   </div>
   <div class="lines">
@@ -60,6 +60,9 @@
     right: 0;
     font-size: 1.1rem;
     position: fixed;
+    &:hover {
+      background-color: $snow-dark-color;
+    }
     &:focus {
       outline: solid;
     }
