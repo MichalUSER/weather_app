@@ -3,12 +3,10 @@ import request from "./request";
 
 const url = "http://192.168.100.8:8080";
 
-
 function average(temps: ITemp[]): number {
   const sum = temps.reduce((acc, curr) => acc + parseFloat(curr.averageTemp), 0);
   return +(sum / temps.length).toFixed(2);
 }
-
 
 async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);
@@ -63,7 +61,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   // let monthDay = 11 // for dev purposes
   let day = getDay();
   let dayOfMonth = new Date().getDate();
-  for (let i = dayOfMonth - 4; i < dayOfMonth + 1; i++) {
+  for (let i = dayOfMonth - 3; i < dayOfMonth + 1; i++) {
     let response = await request<ITemp[]>(`${url}/temps/${i}`);
     if (response.length == 0) {
       continue;
