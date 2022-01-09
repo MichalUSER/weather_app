@@ -81,6 +81,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 5rem;
+	padding: 0 1rem;
   }
 
   .component {

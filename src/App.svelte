@@ -26,6 +26,7 @@
 <div class="wrapper">
   <main>
     {#await temp}
+		<Loading />
     {:then data}
       <Temp number={data.averageTemp} hour={data.h} />
     {/await}
