@@ -1,7 +1,7 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://192.168.0.100:8080";
+const url = "http://localhost:8080";
 
 function average(temps: ITemp[]): number {
   const sum = temps.reduce((acc, curr) => acc + +curr.averageTemp, 0);
@@ -58,7 +58,11 @@ function getDay(): number {
 async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   let fourTemps: ITemp[][] = [];
   let days: string[] = [];
-  // let monthDay = 11 // for dev purposes
+  // for dev purposes
+  /*
+  let dayOfMonth = 16
+  let day = 7;
+  */
   let day = getDay();
   let dayOfMonth = new Date().getDate();
   for (let i = dayOfMonth - 3; i < dayOfMonth + 1; i++) {

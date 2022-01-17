@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import type ITemp from "../utils/itemp";
-
   export let temp: number = 0;
 </script>
 

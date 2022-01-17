@@ -1,3 +1,9 @@
-import { writable, } from "svelte/store";
+import { writable } from "svelte/store";
 
-export default writable(false);
+const visible = writable(false);
+const refresh = writable(false);
+
+export {
+  visible,
+  refresh
+};

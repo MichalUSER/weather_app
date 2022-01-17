@@ -1,7 +1,8 @@
 <script lang="ts">
   import type ITemp from "../utils/itemp";
   import Day from "./Day.svelte";
-  import visible from "../utils/stores";
+  import { visible } from "../utils/stores";
+  import Overlay from "./Overlay.svelte";
 
   export let days: string[];
   export let temps: ITemp[][];
@@ -24,6 +25,7 @@
 
 {#if $visible}
   <Day {temps} {days} {i} />
+  <Overlay />
 {/if}
 
 <style lang="scss">

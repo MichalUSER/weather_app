@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import type ITemp from "../utils/itemp";
-  import visible from "../utils/stores";
+  import { visible } from "../utils/stores";
   import { average } from "../utils/fetcher";
 
   export let temps: ITemp[][];
@@ -81,7 +81,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 5rem;
-	padding: 0 1rem;
+    padding: 0 1rem;
   }
 
   .component {
@@ -91,7 +91,7 @@
       padding: 0;
     }
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     right: 0;
     margin: 0;
