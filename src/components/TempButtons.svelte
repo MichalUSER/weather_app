@@ -2,7 +2,7 @@
   import type ITemp from "../utils/itemp";
   import Day from "./Day.svelte";
   import { visible } from "../utils/stores";
-  import Overlay from "./Overlay.svelte";
+  import Overlay from "./other/Overlay.svelte";
 
   export let days: string[];
   export let temps: ITemp[][];
@@ -42,7 +42,7 @@
     outline: none;
 
     &:focus {
-      outline: auto;
+      outline: solid;
     }
   }
 

@@ -1,7 +1,8 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://localhost:8080";
+//const url = "http://localhost:8080";
+const url = "http://192.168.0.100:8080";
 
 function average(temps: ITemp[]): number {
   const sum = temps.reduce((acc, curr) => acc + +curr.averageTemp, 0);
