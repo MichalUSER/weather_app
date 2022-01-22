@@ -3,7 +3,7 @@
 </div>
 
 <style lang="scss">
-  @import "../../style.scss";
+  @import "../style.scss";
 
   $duration: 1300ms;
 

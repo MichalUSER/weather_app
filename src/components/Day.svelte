@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import type ITemp from "../utils/itemp";
   import { visible } from "../utils/stores";
   import { average } from "../utils/fetcher";
@@ -13,9 +13,8 @@
 
 <div
   class="component"
-  transition:fly={{
+  transition:fade={{
     duration: 200,
-    x: 400,
   }}
 >
   <h1>{days[i]}</h1>
@@ -62,6 +61,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &:last-child {
+      border: 0;
+    }
+    border-bottom: 1px solid #1D3643;
   }
   .wrapper > * {
     margin: 7px;
@@ -78,6 +81,7 @@
     @include sm {
       width: 70%;
     }
+    width: 20rem;
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 5rem;
@@ -85,20 +89,15 @@
   }
 
   .component {
-    @include sm {
-      width: 100%;
-      border: 0;
-      padding: 0;
-    }
+    width: 100%;
+    height: 100%;
+    padding: 0;
     position: fixed;
     z-index: 3;
     top: 0;
-    right: 0;
+    left: 0;
     margin: 0;
-    padding: 0 1.3rem;
-    height: 100%;
     background: $bg-color;
-    border-left: 1px solid $blue-color;
     display: flex;
     align-items: center;
     flex-direction: column;

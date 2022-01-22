@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Loading from "./components/other/Loading.svelte";
+  import Loading from "./components/Loading.svelte";
   import Header from "./components/Header.svelte";
   import Temp from "./components/Temp.svelte";
   import YesterdayTemp from "./components/YesterdayTemp.svelte";
