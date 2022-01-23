@@ -2,3 +2,4 @@ package.json
 svelte.config.js
 tsconfig.json
 vite.config.json
+pnpm-lock.yaml
