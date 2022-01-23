@@ -17,7 +17,9 @@
 
   onMount(async () => {
     const date = new Date();
-    const yesterdayTemps = await request<ITemp[]>(`${url}/temps/${date.getDate() - 1}`);
+    const yesterdayTemps = await request<ITemp[]>(
+      `${url}/temps/${date.getDate() - 1}`
+    );
     averageTemp = average(yesterdayTemps);
   });
 </script>
@@ -47,6 +49,7 @@
     color: $fg-color;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color-scheme: dark;
   }
 
   .wrapper {
