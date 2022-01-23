@@ -2,8 +2,7 @@
 
 **Web app for my weather app**
 
-[![](https://tokei.rs/b1/github/MichalUSER/weather_app)](https://github.com/MichalUSER/weather_app)
-
+[![](https://tokei.rs/b1/github/MichalUSER/weather_app?category=files)](https://github.com/MichalUSER/weather_app)
 
 ## Tech info
 
