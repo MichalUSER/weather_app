@@ -9,6 +9,26 @@
   export let i: number;
   let dayTemps = temps[i];
   let dayAverage = average(dayTemps);
+  let diffTemps = findDiff();
+
+  interface DifferentI {
+    highest: number;
+    lowest: number;
+  }
+
+  function findDiff(): DifferentI {
+    return dayTemps.reduce(
+      (acc, curr) => {
+        if (curr.averageTemp > acc.highest) {
+          acc.highest = curr.averageTemp;
+        } else if (curr.averageTemp < acc.lowest) {
+          acc.lowest = curr.averageTemp;
+        }
+        return acc;
+      },
+      { highest: 0.0, lowest: dayTemps[0].averageTemp } as DifferentI
+    );
+  }
 </script>
 
 <div
@@ -21,7 +41,11 @@
   <p>{dayAverage}°C</p>
   <div class="scroll">
     {#each dayTemps as temp}
-      <div class="wrapper">
+      <div
+        class="wrapper"
+        class:diff={temp.averageTemp == diffTemps.highest ||
+          temp.averageTemp == diffTemps.lowest}
+      >
         <h2>{temp.h}:00</h2>
         <p>{temp.averageTemp}°C</p>
       </div>
@@ -57,6 +81,13 @@
     margin-bottom: 1.3rem;
   }
 
+  .diff {
+    background-color: $diff-color;
+  }
+  .diff > p {
+    color: #b9d1df;
+  }
+
   .wrapper {
     display: flex;
     align-items: center;
@@ -64,7 +95,7 @@
     &:last-child {
       border: 0;
     }
-    border-bottom: 1px solid #1D3643;
+    border-bottom: 1px solid #1d3643;
   }
   .wrapper > * {
     margin: 7px;
