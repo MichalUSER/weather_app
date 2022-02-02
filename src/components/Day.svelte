@@ -85,6 +85,9 @@
   h1 {
     margin-bottom: 2px;
   }
+  p {
+    color: $blue-color;
+  }
 
   .desc {
     display: flex;
@@ -97,7 +100,7 @@
     height: 1.5rem;
     background-color: $blue-color;
   }
-  p {
+  .desc > p {
     margin: 0 0.5rem;
     &:first-child {
       color: $blue-color;
