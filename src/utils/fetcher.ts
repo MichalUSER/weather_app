@@ -21,59 +21,32 @@ function toDay(n: number): string {
       return "Tuesday";
     case 3:
       return "Wednesday";
-    case 8:
-      return "Monday";
-    case 9:
-      return "Tuesday";
-    case 10:
-      return "Wednesday";
     case 4:
       return "Thursday";
     case 5:
       return "Friday";
     case 6:
       return "Saturday";
-    case 7:
+    case 0:
       return "Sunday";
     default:
       break;
   }
 }
 
-function getDay(): number {
-  const d = new Date().getDay();
-  switch (d) {
-    case 0:
-      return 7;
-    case 1:
-      return 8;
-    case 2:
-      return 9;
-    case 3:
-      return 10;
-    default:
-      return d;
-  }
-}
-
 async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   let fourTemps: ITemp[][] = [];
   let days: string[] = [];
-  // for dev purposes
-  /*
-  let dayOfMonth = 16
-  let day = 7;
-  */
-  let day = getDay();
-  let dayOfMonth = new Date().getDate();
-  for (let i = dayOfMonth - 3; i < dayOfMonth + 1; i++) {
-    let response = await request<ITemp[]>(`${url}/temps/${i}`);
+  let date = new Date();
+  date.setDate(date.getDate() - 4);
+  for (let i = 0; i <= 3; i++) {
+    date.setDate(date.getDate() + 1);
+    let response = await request<ITemp[]>(`${url}/temps/${date.getMonth() + 1}/${date.getDate()}`);
     if (response.length == 0) {
       continue;
     }
     fourTemps.push(response);
-    days.push(toDay(day - (dayOfMonth - i)));
-    //console.log(day - (dayOfMonth - i));
+    days.push(toDay(date.getDay()));
   }
 
   return [fourTemps, days];

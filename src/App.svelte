@@ -17,8 +17,9 @@
 
   onMount(async () => {
     const date = new Date();
+	date.setDate(date.getDate() - 1);
     const yesterdayTemps = await request<ITemp[]>(
-      `${url}/temps/${date.getDate() - 1}`
+      `${url}/temps/${date.getMonth() + 1}/${date.getDate()}`
     );
     averageTemp = average(yesterdayTemps);
   });
