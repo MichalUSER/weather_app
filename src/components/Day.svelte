@@ -10,6 +10,12 @@
   let dayTemps = temps[i];
   let dayAverage = average(dayTemps);
   let diffTemps = findDiff();
+  let date = getDate();
+
+  function getDate(): string {
+    const t = dayTemps[0];
+    return `${t.d}.${t.m}.${t.y}`;
+  }
 
   interface DifferentI {
     highest: number;
@@ -38,7 +44,11 @@
   }}
 >
   <h1>{days[i]}</h1>
-  <p>{dayAverage}°C</p>
+  <div class="desc">
+	  <p>{dayAverage}°C</p>
+    <div class="line"></div>
+    <p>{date}</p>
+  </div>
   <div class="scroll">
     {#each dayTemps as temp}
       <div
@@ -75,10 +85,26 @@
   h1 {
     margin-bottom: 2px;
   }
-  p {
-    color: $blue-color;
-    margin-top: 0;
+
+  .desc {
+    display: flex;
+    justify-content: center;
     margin-bottom: 1.3rem;
+    margin-top: 0;
+  }
+  .line {
+    width: 1px;
+    height: 1.5rem;
+    background-color: $blue-color;
+  }
+  p {
+    margin: 0 0.5rem;
+    &:first-child {
+      color: $blue-color;
+    }
+    &:last-child {
+      color: $fg-color;
+    }
   }
 
   .diff {
