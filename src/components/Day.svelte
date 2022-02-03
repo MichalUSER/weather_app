@@ -45,9 +45,13 @@
 >
   <h1>{days[i]}</h1>
   <div class="desc">
-	  <p>{dayAverage}°C</p>
-    <div class="line"></div>
     <p>{date}</p>
+    <div class="line" />
+    <p>Lowest: <span class="temp">{diffTemps.lowest}°C</span></p>
+    <div class="line" />
+    <p>Highest: <span class="temp">{diffTemps.highest}°C</span></p>
+    <div class="line" />
+	  <p>Average: <span class="temp">{dayAverage}°C</span></p>
   </div>
   <div class="scroll">
     {#each dayTemps as temp}
@@ -57,7 +61,7 @@
           temp.averageTemp == diffTemps.lowest}
       >
         <h2>{temp.h}:00</h2>
-        <p>{temp.averageTemp}°C</p>
+        <p class="temp">{temp.averageTemp}°C</p>
       </div>
     {/each}
   </div>
@@ -85,29 +89,34 @@
   h1 {
     margin-bottom: 2px;
   }
-  p {
-    color: $blue-color;
-  }
 
   .desc {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.3rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
     margin-top: 0;
+    @include sm {
+      flex-direction: column;
+      margin-bottom: 0.8rem;
+    }
   }
   .line {
     width: 1px;
     height: 1.5rem;
+    margin: 0 0.5rem;
+    @include sm {
+      width: 100%;
+      height: 1px;
+    }
     background-color: $blue-color;
   }
   .desc > p {
-    margin: 0 0.5rem;
-    &:first-child {
-      color: $blue-color;
-    }
-    &:last-child {
-      color: $fg-color;
-    }
+    color: $fg-color;
+    margin: 3px 0;
+  }
+  .temp {
+    color: $blue-color;
   }
 
   .diff {
