@@ -35,6 +35,14 @@
       { highest: 0.0, lowest: dayTemps[0].averageTemp } as DifferentI
     );
   }
+
+  function changeDay(index: number) {
+    i = index;
+    dayTemps = temps[i];
+    dayAverage = average(dayTemps);
+    diffTemps = findDiff();
+    date = getDate();
+  }
 </script>
 
 <div
@@ -43,6 +51,15 @@
     duration: 200,
   }}
 >
+  <div class="days">
+    {#each days as d, index}
+      <button
+        class="day"
+        class:current={i == index}
+        on:click={() => changeDay(index)}>{d.slice(0, 2)}</button
+      >
+    {/each}
+  </div>
   <h1>{days[i]}</h1>
   <div class="desc">
     <p>{date}</p>
@@ -51,7 +68,7 @@
     <div class="line" />
     <p>Highest: <span class="temp">{diffTemps.highest}°C</span></p>
     <div class="line" />
-	  <p>Average: <span class="temp">{dayAverage}°C</span></p>
+    <p>Average: <span class="temp">{dayAverage}°C</span></p>
   </div>
   <div class="scroll">
     {#each dayTemps as temp}
@@ -65,7 +82,7 @@
       </div>
     {/each}
   </div>
-  <button on:click={() => ($visible = !$visible)}>OK</button>
+  <button class="ok" on:click={() => ($visible = !$visible)}>OK</button>
 </div>
 
 <style lang="scss">
@@ -86,8 +103,23 @@
     }
   }
 
+  .days {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 1rem;
+  }
+  .day {
+    @include day-button;
+    margin: 0 10px;
+  }
+  .current {
+    color: $blue-color;
+  }
+
   h1 {
     margin-bottom: 2px;
+    margin-top: 0.5rem;
   }
 
   .desc {
@@ -139,7 +171,7 @@
     margin: 7px;
   }
 
-  button {
+  .ok {
     @include ok-button;
     position: absolute;
     bottom: 0;

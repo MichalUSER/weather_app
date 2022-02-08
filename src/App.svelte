@@ -17,7 +17,7 @@
 
   onMount(async () => {
     const date = new Date();
-	date.setDate(date.getDate() - 1);
+    date.setDate(date.getDate() - 1);
     const yesterdayTemps = await request<ITemp[]>(
       `${url}/temps/${date.getMonth() + 1}/${date.getDate()}`
     );

@@ -29,21 +29,6 @@
 <style lang="scss">
   @import "../style.scss";
 
-  @mixin primary-button {
-    text-decoration: underline;
-    font-size: 1.3rem;
-    color: $fg-color;
-    cursor: pointer;
-    padding: 1px;
-    border: none;
-    background-color: transparent;
-    outline: none;
-
-    &:focus {
-      outline: solid;
-    }
-  }
-
   h1 {
     font-size: 1.7rem;
     margin: 0;
@@ -73,7 +58,7 @@
   }
 
   button {
-    @include primary-button;
+    @include day-button;
     margin: 0 10px;
   }
 </style>

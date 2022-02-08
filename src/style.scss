@@ -38,3 +38,18 @@ $screen-sm-min: 576px;
   text-align: center;
 	@include flex;
 }
+
+@mixin day-button {
+  text-decoration: underline;
+  font-size: 1.3rem;
+  color: $fg-color;
+  cursor: pointer;
+  padding: 1px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  &:focus {
+    outline: solid;
+  }
+}
