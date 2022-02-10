@@ -111,6 +111,9 @@
   }
   .day {
     @include day-button;
+    &:focus {
+      color: $blue-color;
+    }
     margin: 0 10px;
   }
   .current {
