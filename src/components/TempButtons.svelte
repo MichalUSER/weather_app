@@ -59,6 +59,6 @@
 
   button {
     @include day-button;
-    margin: 0 10px;
+    margin: 0.2rem 10px;
   }
 </style>

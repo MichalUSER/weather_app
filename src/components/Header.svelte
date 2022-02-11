@@ -55,7 +55,6 @@
   a {
     color: $bg-color;
     text-decoration: none;
-    opacity: 0.7;
     margin: $margin;
     right: 0;
     font-size: 1.1rem;
