@@ -6,6 +6,7 @@
   import Temp from "./components/Temp.svelte";
   import YesterdayTemp from "./components/YesterdayTemp.svelte";
   import TempButtons from "./components/TempButtons.svelte";
+  import Error from "./components/Error.svelte";
 
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
@@ -32,6 +33,8 @@
       <Loading />
     {:then data}
       <Temp number={data.averageTemp} hour={data.h} />
+    {:catch}
+      <Error />
     {/await}
     <YesterdayTemp temp={averageTemp} />
     {#await weekTemps}
