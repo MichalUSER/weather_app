@@ -1,7 +1,7 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-//const url = "http://localhost:8080";
+// const url = "http://localhost:8080";
 const url = "http://192.168.0.100:8080";
 
 function average(temps: ITemp[]): number {
@@ -33,7 +33,7 @@ function toDay(n: number): string {
       break;
   }
 }
-
+/*
 async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   let fourTemps: ITemp[][] = [];
   let days: string[] = [];
@@ -46,6 +46,24 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
       continue;
     }
     fourTemps.push(response);
+    days.push(toDay(date.getDay()));
+  }
+
+  return [fourTemps, days];
+}
+*/
+
+// TODO: Make a route called last_days
+async function fetchTemps(): Promise<[ITemp[][], string[]]> {
+  let fourTemps: ITemp[][] = [];
+  let days: string[] = [];
+  let date = new Date();
+  date.setDate(date.getDate() - 4);
+  let response = await request<ITemp[]>(`${url}/last_days/4`);
+  for (let i = 0; i <= 3; i++) {
+    const result = response.filter(t => t.d == date.getDate() + 1);
+    fourTemps.push(result);
+    date.setDate(date.getDate() + 1);
     days.push(toDay(date.getDay()));
   }
 

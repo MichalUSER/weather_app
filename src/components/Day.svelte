@@ -23,6 +23,9 @@
   }
 
   function findDiff(): DifferentI {
+    let acc: DifferentI = { highest: 0.0, lowest: dayTemps[0].averageTemp };
+    // reduce is apparently slow
+    /*
     return dayTemps.reduce(
       (acc, curr) => {
         if (curr.averageTemp > acc.highest) {
@@ -34,6 +37,16 @@
       },
       { highest: 0.0, lowest: dayTemps[0].averageTemp } as DifferentI
     );
+    */
+    for (let i = 0; i < dayTemps.length; i++) {
+      const curr = dayTemps[i];
+      if (curr.averageTemp > acc.highest) {
+        acc.highest = curr.averageTemp;
+      } else if (curr.averageTemp < acc.lowest) {
+        acc.lowest = curr.averageTemp;
+      }
+    }
+    return acc;
   }
 
   function changeDay(index: number) {
