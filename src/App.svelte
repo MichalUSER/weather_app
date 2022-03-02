@@ -70,6 +70,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100vh;
+    width: 115vh;
   }
 </style>
