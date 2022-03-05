@@ -1,8 +1,9 @@
 import type ITemp from "./itemp";
 import request from "./request";
 
-const url = "http://localhost:8080";
+// const url = "http://localhost:8080";
 // const url = "http://192.168.0.100:8080";
+const url = "http://127.0.0.1:8000";
 
 function average(temps: ITemp[]): number {
   const sum = temps.reduce((acc, curr) => acc + +curr.averageTemp, 0);
@@ -42,8 +43,12 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   let response = await request<ITemp[]>(`${url}/last_days/4`);
   for (let i = 0; i <= 3; i++) {
     const result = response.filter(t => t.d == date.getDate());
-    fourTemps.push(result);
-    days.push(toDay(date.getDay()));
+    if (result.length == 0) {
+      continue;
+    } else {
+      fourTemps.push(result);
+      days.push(toDay(date.getDay()));
+    }
     date.setDate(date.getDate() + 1);
   }
 
