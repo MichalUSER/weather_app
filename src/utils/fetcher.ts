@@ -43,9 +43,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
   let response = await request<ITemp[]>(`${url}/last_days/4`);
   for (let i = 0; i <= 3; i++) {
     const result = response.filter(t => t.d == date.getDate());
-    if (result.length == 0) {
-      continue;
-    } else {
+    if (result.length != 0) {
       fourTemps.push(result);
       days.push(toDay(date.getDay()));
     }
