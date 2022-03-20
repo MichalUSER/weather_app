@@ -11,7 +11,7 @@
   let dayAverage = average(dayTemps);
   let diffTemps = findDiff();
   let date = getDate();
-  let currentHour = new Date().getHours();
+  let currentDate = new Date();
 
   function getDate(): string {
     const t = dayTemps[0];
@@ -90,7 +90,7 @@
         class="wrapper"
         class:diff={temp.averageTemp == diffTemps.highest ||
           temp.averageTemp == diffTemps.lowest}
-        class:curr={temp.h == currentHour}
+        class:curr={temp.h == currentDate.getHours() && temp.d == currentDate.getDate()}
       >
         <h2>{temp.h}:00</h2>
         <p class="temp">{temp.averageTemp}°C</p>
