@@ -11,6 +11,7 @@
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
   import { url, fetchTemp, fetchTemps, average } from "./utils/fetcher";
+  import { visible } from "./utils/stores";
 
   let averageTemp = 0;
   let weekTemps = fetchTemps();
@@ -44,6 +45,16 @@
     {/await}
   </main>
 </div>
+
+<svelte:head>
+  {#if $visible}
+      <style>
+         body {
+            overflow: hidden;
+         }
+      </style>
+  {/if}
+</svelte:head>
 
 <style lang="scss">
   @import "./style.scss";
