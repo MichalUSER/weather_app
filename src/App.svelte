@@ -11,13 +11,15 @@
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
   import { url, fetchTemp, fetchTemps, average } from "./utils/fetcher";
-  import { visible } from "./utils/stores";
+  import { visible, temps, days } from "./utils/stores";
 
   let averageTemp = 0;
-  let weekTemps = fetchTemps();
   let temp = fetchTemp();
 
   onMount(async () => {
+    const weekTemps = await fetchTemps();
+    $temps = weekTemps[0];
+    $days = weekTemps[1];
     const date = new Date();
     date.setDate(date.getDate() - 1);
     const yesterdayTemps = await request<ITemp[]>(
@@ -38,21 +40,17 @@
       <Error />
     {/await}
     <YesterdayTemp temp={averageTemp} />
-    {#await weekTemps}
-      <Loading />
-    {:then data}
-      <TempButtons temps={data[0]} days={data[1]} />
-    {/await}
+    <TempButtons />
   </main>
 </div>
 
 <svelte:head>
   {#if $visible}
-      <style>
-         body {
-            overflow: hidden;
-         }
-      </style>
+    <style>
+      body {
+        overflow: hidden;
+      }
+    </style>
   {/if}
 </svelte:head>
 

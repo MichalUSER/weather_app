@@ -1,14 +1,10 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import type ITemp from "../utils/itemp";
-  import { visible } from "../utils/stores";
   import { average } from "../utils/fetcher";
+  import { visible, temps, days, currentDay } from "../utils/stores";
   import Days from "./Days.svelte";
 
-  export let temps: ITemp[][];
-  export let days: string[];
-  export let i: number;
-  let dayTemps = temps[i];
+  let dayTemps = $temps[$currentDay];
   let dayAverage = average(dayTemps);
   let diffTemps = findDiff();
   let date = getDate();
@@ -52,8 +48,8 @@
   }
 
   function changeDay(event: CustomEvent<number>) {
-    i = event.detail;
-    dayTemps = temps[i];
+    $currentDay = event.detail;
+    dayTemps = $temps[$currentDay];
     dayAverage = average(dayTemps);
     diffTemps = findDiff();
     date = getDate();
@@ -66,8 +62,8 @@
     duration: 200,
   }}
 >
-  <Days on:index={changeDay} {i} {days} />
-  <h1>{days[i]}</h1>
+  <Days on:index={changeDay} />
+  <h1>{$days[$currentDay]}</h1>
   <div class="desc">
     <p>{date}</p>
     <div class="line" />

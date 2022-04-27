@@ -1,8 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-
-  export let days: string[];
-  export let i: number;
+  import { currentDay, days } from "../utils/stores";
 
   const dispatch = createEventDispatcher<{ index: number }>();
 
@@ -12,10 +10,10 @@
 </script>
 
 <div class="days">
-  {#each days as d, index}
+  {#each $days as d, index}
     <button
       class="day"
-      class:current={i == index}
+      class:current={$currentDay == index}
       on:click={() => changeDay(index)}>{d.slice(0, 2)}</button
     >
   {/each}

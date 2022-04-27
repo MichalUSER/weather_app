@@ -1,29 +1,24 @@
 <script lang="ts">
-  import type ITemp from "../utils/itemp";
   import Menu from "./Menu.svelte";
-  import { visible } from "../utils/stores";
-
-  export let days: string[];
-  export let temps: ITemp[][];
-  let i = 0;
+  import { currentDay, days, visible } from "../utils/stores";
 
   function onClick(index: number) {
     $visible = !$visible;
-    i = index;
+    $currentDay = index;
   }
 </script>
 
 <div class="component">
   <h1>Week temps</h1>
   <div class="days">
-    {#each days as d, index}
+    {#each $days as d, index}
       <button on:click={() => onClick(index)}>{d}</button>
     {/each}
   </div>
 </div>
 
 {#if $visible}
-  <Menu {temps} {days} {i} />
+  <Menu />
 {/if}
 
 <style lang="scss">
