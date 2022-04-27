@@ -112,23 +112,6 @@
     }
   }
 
-  .days {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 1rem;
-  }
-  .day {
-    @include day-button;
-    &:focus {
-      color: $blue-color;
-    }
-    margin: 0 10px;
-  }
-  .current {
-    color: $blue-color;
-  }
-
   h1 {
     margin-bottom: 2px;
     margin-top: 0.5rem;
