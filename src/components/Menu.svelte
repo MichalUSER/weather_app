@@ -3,6 +3,7 @@
   import type ITemp from "../utils/itemp";
   import { visible } from "../utils/stores";
   import { average } from "../utils/fetcher";
+  import Days from "./Days.svelte";
 
   export let temps: ITemp[][];
   export let days: string[];
@@ -50,8 +51,8 @@
     return acc;
   }
 
-  function changeDay(index: number) {
-    i = index;
+  function changeDay(event: CustomEvent<number>) {
+    i = event.detail;
     dayTemps = temps[i];
     dayAverage = average(dayTemps);
     diffTemps = findDiff();
@@ -65,15 +66,7 @@
     duration: 200,
   }}
 >
-  <div class="days">
-    {#each days as d, index}
-      <button
-        class="day"
-        class:current={i == index}
-        on:click={() => changeDay(index)}>{d.slice(0, 2)}</button
-      >
-    {/each}
-  </div>
+  <Days on:index={changeDay} {i} {days} />
   <h1>{days[i]}</h1>
   <div class="desc">
     <p>{date}</p>
@@ -90,7 +83,8 @@
         class="wrapper"
         class:diff={temp.averageTemp == diffTemps.highest ||
           temp.averageTemp == diffTemps.lowest}
-        class:curr={temp.h == currentDate.getHours() && temp.d == currentDate.getDate()}
+        class:curr={temp.h == currentDate.getHours() &&
+          temp.d == currentDate.getDate()}
       >
         <h2>{temp.h}:00</h2>
         <p class="temp">{temp.averageTemp}°C</p>

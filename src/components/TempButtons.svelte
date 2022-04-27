@@ -1,6 +1,6 @@
 <script lang="ts">
   import type ITemp from "../utils/itemp";
-  import Day from "./Day.svelte";
+  import Menu from "./Menu.svelte";
   import { visible } from "../utils/stores";
 
   export let days: string[];
@@ -23,7 +23,7 @@
 </div>
 
 {#if $visible}
-  <Day {temps} {days} {i} />
+  <Menu {temps} {days} {i} />
 {/if}
 
 <style lang="scss">
