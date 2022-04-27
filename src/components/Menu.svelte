@@ -48,7 +48,7 @@
     duration: 200,
   }}
 >
-  <Days on:index={changeDay} />
+  <Days on:changeDay={changeDay} />
   <h1>{$days[$currentDay]}</h1>
   <div class="desc">
     <p>{date}</p>

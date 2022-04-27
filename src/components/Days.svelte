@@ -2,10 +2,10 @@
   import { createEventDispatcher } from "svelte";
   import { currentDay, days } from "../utils/stores";
 
-  const dispatch = createEventDispatcher<{ index: number }>();
+  const dispatch = createEventDispatcher<{ changeDay: number }>();
 
   function changeDay(index: number) {
-    dispatch("index", index);
+    dispatch("changeDay", index);
   }
 </script>
 
