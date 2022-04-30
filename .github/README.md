@@ -2,13 +2,23 @@
 
 **Web app for my weather app**
 
-[![](https://tokei.rs/b1/github/MichalUSER/weather_app?category=files)](https://github.com/MichalUSER/weather_app)
+<details>
+<summary><strong>Showcase</strong></summary>
+
+**Main**
+
+![image1](https://raw.githubusercontent.com/MichalUSER/weather_app/main/.github/assets/image1.png)
+
+**Menu**
+
+![image2](https://raw.githubusercontent.com/MichalUSER/weather_app/main/.github/assets/image2.png)
+</details>
 
 ## Tech info
 
 Using svelte + typescript + scss
 
-<br>
+## Links
 
 <div align="left">
 
