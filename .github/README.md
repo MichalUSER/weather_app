@@ -7,11 +7,11 @@
 
 **Main**
 
-![image1](https://raw.githubusercontent.com/MichalUSER/weather_app/main/.github/assets/image1.png)
+![image1](./assets/image1.png)
 
 **Menu**
 
-![image2](https://raw.githubusercontent.com/MichalUSER/weather_app/main/.github/assets/image2.png)
+![image2](./assets/image2.png)
 </details>
 
 ## Tech info
