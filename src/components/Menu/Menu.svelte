@@ -15,13 +15,13 @@
     return `${t.d}.${t.m}.${t.y}`;
   }
 
-  interface DifferentI {
+  interface IDifferent {
     highest: number;
     lowest: number;
   }
 
-  function findDiff(): DifferentI {
-    let acc: DifferentI = { highest: 0.0, lowest: dayTemps[0].averageTemp };
+  function findDiff(): IDifferent {
+    let acc: IDifferent = { highest: 0.0, lowest: dayTemps[0].averageTemp };
     for (let i = 0; i < dayTemps.length; i++) {
       const curr = dayTemps[i];
       if (curr.averageTemp > acc.highest) {
