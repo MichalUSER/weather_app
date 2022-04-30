@@ -14,7 +14,7 @@ async function fetchTemp(): Promise<ITemp> {
   return await request<ITemp>(`${url}/last_temp`);
 }
 
-function toDay(n: number): string {
+function toDay(n: number): string | undefined {
   switch (n) {
     case 1:
       return "Monday";
@@ -45,7 +45,7 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
     const result = response.filter(t => t.d == date.getDate());
     if (result.length != 0) {
       fourTemps.push(result);
-      days.push(toDay(date.getDay()));
+      days.push(toDay(date.getDay())!);
     }
     date.setDate(date.getDate() + 1);
   }
