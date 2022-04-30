@@ -1,6 +1,6 @@
 <script lang="ts">
   import Menu from "./Menu/Menu.svelte";
-  import { currentDay, days, visible } from "../utils/stores";
+  import { currentDay, days, visible } from "@utils/stores";
 
   function onClick(index: number) {
     $visible = !$visible;

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { currentDay, days } from "../../utils/stores";
+  import { currentDay, days } from "@utils/stores";
 
   const dispatch = createEventDispatcher<{ changeDay: number }>();
 
