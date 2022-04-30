@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { average } from "../utils/fetcher";
-  import { visible, temps, days, currentDay } from "../utils/stores";
+  import { average } from "@utils/fetcher";
+  import { visible, temps, days, currentDay } from "@utils/stores";
   import Days from "./Days.svelte";
 
   let dayTemps = $temps[$currentDay];
@@ -77,7 +77,7 @@
 </div>
 
 <style lang="scss">
-  @import "../style.scss";
+  @import "src/style.scss";
 
   @mixin ok-button {
     font-size: 1.3rem;
