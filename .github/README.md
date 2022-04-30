@@ -5,11 +5,11 @@
 <details>
 <summary><strong>Showcase</strong></summary>
 
-**Main**
+Main
 
 ![image1](./assets/image1.png)
 
-**Menu**
+Menu
 
 ![image2](./assets/image2.png)
 </details>
