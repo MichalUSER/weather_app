@@ -36,11 +36,11 @@
       <Loading />
     {:then data}
       <Temp number={data.averageTemp} hour={data.h} />
+      <YesterdayTemp temp={averageTemp} />
+      <TempButtons />
     {:catch}
       <Error />
     {/await}
-    <YesterdayTemp temp={averageTemp} />
-    <TempButtons />
   </main>
 </div>
 
