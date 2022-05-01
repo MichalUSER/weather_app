@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { currentDay, days } from "@utils/stores";
+  import { currentDay, days, averages } from "@utils/stores";
 
   const dispatch = createEventDispatcher<{ changeDay: number }>();
 
@@ -11,11 +11,14 @@
 
 <div class="days">
   {#each $days as d, index}
-    <button
-      class="day"
-      class:current={$currentDay == index}
-      on:click={() => changeDay(index)}>{d.slice(0, 2)}</button
-    >
+    <div class="day-div">
+      <p class="temp">{$averages[index]}°C</p>
+      <button
+        class="day"
+        class:current={$currentDay == index}
+        on:click={() => changeDay(index)}>{d.slice(0, 2)}</button
+      >
+    </div>
   {/each}
 </div>
 
@@ -29,12 +32,22 @@
     margin-top: 1rem;
   }
 
+  .day-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 10px;
+  }
   .day {
     @include day-button;
     &:focus {
       color: $blue-color;
     }
-    margin: 0 10px;
+  }
+
+  .temp {
+    color: $blue-color;
+    font-size: 0.8rem;
   }
 
   .current {

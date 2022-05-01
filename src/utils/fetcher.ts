@@ -35,9 +35,10 @@ function toDay(n: number): string | undefined {
   }
 }
 
-async function fetchTemps(): Promise<[ITemp[][], string[]]> {
+async function fetchTemps(): Promise<[ITemp[][], string[], string[]]> {
   let fourTemps: ITemp[][] = [];
   let days: string[] = [];
+  let averages: string[] = [];
   let date = new Date();
   date.setDate(date.getDate() - 3);
   let response = await request<ITemp[]>(`${url}/last_days/4`);
@@ -45,12 +46,13 @@ async function fetchTemps(): Promise<[ITemp[][], string[]]> {
     const result = response.filter(t => t.d == date.getDate());
     if (result.length != 0) {
       fourTemps.push(result);
+      averages.push(average(result).toString());
       days.push(toDay(date.getDay())!);
     }
     date.setDate(date.getDate() + 1);
   }
 
-  return [fourTemps, days];
+  return [fourTemps, days, averages];
 }
 
 export {

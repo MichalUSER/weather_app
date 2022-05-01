@@ -4,11 +4,13 @@ import type ITemp from "./itemp";
 const visible = writable(false);
 const temps: Writable<ITemp[][]> = writable([[]]);
 const days: Writable<string[]> = writable([]);
+const averages: Writable<string[]> = writable([]);
 const currentDay: Writable<number> = writable();
 
 export {
   visible,
   temps,
   days,
+  averages,
   currentDay
 };

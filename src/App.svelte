@@ -11,7 +11,7 @@
   import request from "./utils/request";
   import type ITemp from "./utils/itemp";
   import { url, fetchTemp, fetchTemps, average } from "./utils/fetcher";
-  import { visible, temps, days } from "./utils/stores";
+  import { visible, temps, days, averages } from "./utils/stores";
 
   let averageTemp = 0;
   let temp = fetchTemp();
@@ -20,6 +20,7 @@
     const weekTemps = await fetchTemps();
     $temps = weekTemps[0];
     $days = weekTemps[1];
+    $averages = weekTemps[2];
     const date = new Date();
     date.setDate(date.getDate() - 1);
     const yesterdayTemps = await request<ITemp[]>(
