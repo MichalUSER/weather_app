@@ -7,11 +7,11 @@
 
 Main
 
-![image1](./github/assets/image1.png)
+![image1](./.github/assets/image1.png)
 
 Menu
 
-![image2](./github/assets/image2.png)
+![image2](./.github/assets/image2.png)
 </details>
 
 ## Tech info
