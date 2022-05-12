@@ -103,7 +103,7 @@
   }
 
   .wave .shape-fill {
-    fill: #72a4c1;
+    fill: #4985a7;
   }
 
   main {
