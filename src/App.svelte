@@ -99,7 +99,7 @@
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 93px;
+    height: 68px;
   }
 
   .wave .shape-fill {
